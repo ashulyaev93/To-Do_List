@@ -10,7 +10,7 @@ import standartpark.to_do_list.entities.enums.Status;
 @Setter
 @Entity
 @Builder
-@Table(name = "users")
+@Table(name = "tasks")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +22,6 @@ public class Task {
     private String description;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "status", length = 128, updatable = false)
+    @Column(name = "status", length = 128)
     private Status status;
 }

@@ -1,6 +1,10 @@
 package standartpark.to_do_list.mappers;
 
-import org.springframework.web.bind.annotation.Mapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.Named;
+import org.mapstruct.factory.Mappers;
 import standartpark.to_do_list.dto.TaskDTO;
 import standartpark.to_do_list.entities.Task;
 

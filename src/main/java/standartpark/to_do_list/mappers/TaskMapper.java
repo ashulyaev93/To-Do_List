@@ -16,8 +16,8 @@ public interface TaskMapper {
     @Named("taskToTaskDTO")
     @Mappings({
             @Mapping(source="task.id", target="id"),
-            @Mapping(source="task.title", target="username"),
-            @Mapping(source="task.description", target="firstname"),
+            @Mapping(source="task.title", target="title"),
+            @Mapping(source="task.description", target="description"),
             @Mapping(source="task.status", target="status")
     })
     TaskDTO taskToTaskDTO(Task task);

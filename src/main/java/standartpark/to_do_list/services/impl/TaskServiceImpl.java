@@ -1,5 +1,6 @@
 package standartpark.to_do_list.services.impl;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import standartpark.to_do_list.entities.Task;
@@ -11,6 +12,7 @@ import standartpark.to_do_list.services.TaskService;
 import java.util.List;
 
 @Service
+@Transactional
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskDAO;
@@ -31,10 +33,13 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task updateTaskStatus(Long id, Status status) {
+    public Task updateTaskStatus(Long id, Status newStatus) {
         Task task = taskDAO.findById(id).orElseThrow(() -> new TaskNotFoundException(id));
-        task.setStatus(status);
-        return taskDAO.save(task);
+        if (!task.getStatus().equals(newStatus)) {
+            task.setStatus(newStatus);
+            return taskDAO.save(task);
+        }
+        return task;
     }
 
     @Override

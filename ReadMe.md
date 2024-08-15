@@ -1,3 +1,7 @@
+Docker
+
+docker-compose up --build
+
 Локально
 
 Run:
